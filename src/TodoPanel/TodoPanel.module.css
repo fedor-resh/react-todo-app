@@ -1,0 +1,32 @@
+.addPanel{position: relative;}
+.addPanel span{
+    position: absolute;
+    top: 5px;
+    bottom: 15px;
+    right: 5px;
+    width: 40px;
+    background-color: #505050;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.24);
+    transition: box-shadow .2s;
+}
+.addPanel span:hover{box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.34);}
+.addPanel input{
+    background-color: #4b4b4b;
+    width: calc(100% - 20px);
+    height: 50px;
+    border: 0;
+    padding: 0 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow:inset 0 5px 10px 0 rgba(0, 0, 0, 0.24);
+    transition: box-shadow .2s;
+}
+.addPanel input:focus-visible{
+    outline: -webkit-focus-ring-color 0;
+    box-shadow: inset 0 10px 20px 0 rgba(0, 0, 0, 0.26);
+}
+.wrapper{
+    margin: 100px auto;
+    max-width:300px  ;
+}

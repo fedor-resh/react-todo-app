@@ -10,9 +10,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Sass File" />
         <option value="JavaScript File" />
         <option value="CSS File" />
-        <option value="Sass File" />
       </list>
     </option>
   </component>
@@ -28,6 +28,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MTHome" />
@@ -35,6 +36,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Федор\Documents\GitHub\react-todo-app\src\TodoPanel" />
+      <recent name="C:\Users\Федор\Documents\GitHub\react-todo-app\src\todoPanel" />
       <recent name="C:\Users\user\Desktop\React\react-todo-app\src\TaskList" />
     </key>
   </component>
@@ -47,6 +50,8 @@
       <option name="presentableId" value="Default" />
       <updated>1645123738413</updated>
       <workItem from="1645123739495" duration="4161000" />
+      <workItem from="1645128686613" duration="858000" />
+      <workItem from="1645163272936" duration="7689000" />
     </task>
     <servers />
   </component>
