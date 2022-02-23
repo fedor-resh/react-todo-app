@@ -11,8 +11,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Sass File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -28,18 +29,41 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-sandbox" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="MTHome" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Desktop\React\react-todo-app\src" />
+      <recent name="C:\Users\user\Desktop\React\react-todo-app\src\TodoPanel" />
       <recent name="C:\Users\Федор\Documents\GitHub\react-todo-app\src\TodoPanel" />
       <recent name="C:\Users\Федор\Documents\GitHub\react-todo-app\src\todoPanel" />
       <recent name="C:\Users\user\Desktop\React\react-todo-app\src\TaskList" />
     </key>
+  </component>
+  <component name="RunManager" selected="npm.start">
+    <configuration name="classTask.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="classTask.js" working-dir="$PROJECT_DIR$/src/TodoPanel">
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.classTask.js" />
+      <item itemvalue="npm.start" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.classTask.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -52,10 +76,30 @@
       <workItem from="1645123739495" duration="4161000" />
       <workItem from="1645128686613" duration="858000" />
       <workItem from="1645163272936" duration="7689000" />
+      <workItem from="1645198645067" duration="8892000" />
+      <workItem from="1645276455857" duration="7817000" />
+      <workItem from="1645292984959" duration="6485000" />
+      <workItem from="1645354375704" duration="1468000" />
+      <workItem from="1645450607207" duration="4421000" />
+      <workItem from="1645469546572" duration="8392000" />
+      <workItem from="1645517600051" duration="16000" />
+      <workItem from="1645517713612" duration="84000" />
+      <workItem from="1645517831263" duration="22000" />
+      <workItem from="1645517973812" duration="58000" />
+      <workItem from="1645518076490" duration="140000" />
+      <workItem from="1645518255070" duration="251000" />
+      <workItem from="1645518735970" duration="118000" />
+      <workItem from="1645518897388" duration="15116000" />
+      <workItem from="1645617575400" duration="13568000" />
+      <workItem from="1645645231060" duration="16000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

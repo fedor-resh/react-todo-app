@@ -1,43 +1,67 @@
 import React from 'react';
-import TaskList from "../TaskList/TaskList";
 import styles from './TodoPanel.module.css'
-import taskList from "../TaskList/TaskList";
+import Task from './TaskList/Task/Task';
 
-
-class TodoPanel extends React.Component{
+class TodoPanel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value:'',
-            taskList:[]
+            value: ''
         }
         this.handleChange = this.handleChange.bind(this);
-        this.addTask = this.addTask.bind(this);
+        // this.sendValue = this.sendValue.bind(this);
+        document.addEventListener('keypress', e => {
+            if (e.key === 'Enter') {
+                this.sendValue()
+            }
+        })
     }
-    handleChange(event){
-        this.setState({value:event.target.value})
+    sendValue(){
+        this.props.addTask(this.state.value)
+        this.setState({value: ''})
     }
-    addTask(el){
-        this.setState({taskList: taskList.apply(this.state.value)})
-        console.log(this.state.taskList)
-        this.input.value = ''
+    handleChange(event) {
+        this.setState({value: event.target.value})
     }
-    render(){
+
+    render() {
         return (
             <div className={styles.wrapper}>
                 <div className={styles.addPanel}>
                     <input type="text"
                            id='input'
-                           value={this.state.value}
+                           ref={el=>this.input = el}
                            onChange={this.handleChange}
-                           ref={el => this.input = el}/>
-                    <span onClick={this.addTask}> </span>
+                           value={this.state.value || ""}
+                    />
+                    <span onClick={()=>this.sendValue()}> </span>
                 </div>
-                <TaskList taskList={this.taskList}/>
+                {this.props.taskList.map(({text, isComplete },id) => {
+                        if (!isComplete) {
+                            return <Task change={() => this.props.changeIsComplete(id)}
+                                         key={id}
+                                         taskText={text}
+                                         toSelect={()=>this.props.toSelect(id)}
+                            />
+                        }else {return null}
+                    }
+                )}
+                <details>
+                    <summary>done</summary>
+                    {this.props.taskList.map(({text, isComplete},id) => {
+                            if (isComplete) {
+                                return <Task change={() => this.props.changeIsComplete(id)}
+                                             done={true}
+                                             key={id}
+                                             taskText={text}
+                                />
+                            }else {return null}
+                        }
+                    )}
+                </details>
             </div>
         );
     }
-
-};
+}
 
 export default TodoPanel;
