@@ -11,7 +11,9 @@ class TaskClass {
         this.isInPomodoro = false
         this.id = TaskClass.ownId++
         this.description = ''
-        this.timeToDoMin = 0
+        this.timeToDo = 0
+        this.depthOfInheritance = 1
+
         // this.date = new Date()
     }
 
@@ -22,7 +24,6 @@ function App() {
     const [taskList, setTaskList] = useState(
         localStorage.taskList ? JSON.parse(localStorage.taskList) : [])
     const [selectedId, setSelectedId] = useState(undefined)
-    const [val, setVal] = useState(0)
     useEffect(() => {
         localStorage.taskList = JSON.stringify(taskList)
         console.log(taskList)
@@ -32,6 +33,7 @@ function App() {
         if (value) {
             setTaskList([new TaskClass(value), ...taskList])
             setSelectedId(0)
+
         }
     }
 
@@ -64,7 +66,6 @@ function App() {
             setSelectedId(undefined)
         } else {
             setSelectedId(id)
-            setVal(0)
         }
     }
 
@@ -76,7 +77,7 @@ function App() {
     }
 
     function toSetTime(min) {
-        if (selectedId) {
+        if (selectedId!==undefined) {
             const taskListCopy = taskList.slice()
             taskListCopy[selectedId].timeToDo = min
             setTaskList(taskListCopy)

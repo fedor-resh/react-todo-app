@@ -6,14 +6,16 @@ import styles from './Slider.module.css'
 function Slider({
                     toSetSeconds,
                     isTimePanelVisible=false,
-                    val = 0.5
+                    timeToDo = 0,
+                    selectedId
 }) {
     const [value, setValue] = useState(0.2);
     const { ref } = useMove(({ x }) => setValue(x));
-    // useEffect(()=>setValue(val),[val])
+
     const min = Math.round((value*10)**2)
-    useEffect(()=>toSetSeconds(min),[min])
-    const time = (min<10?'0'+ min:min)+ ':00'
+    useEffect(()=>{toSetSeconds(min)},[min])
+    useEffect(()=>{setValue((timeToDo**0.5)/10)},[selectedId])
+    const time = (min/60>=1?'1:':'')+(min%60<10?'0'+ min%60:min%60)+ ':00'
     return (
         <>
             <div style={{paddingBottom:27}}>

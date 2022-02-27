@@ -22,7 +22,8 @@ const SettingsPanel = (props) => {
                     />
                     <div style={{height:20}}/>
                         <Slider
-                            val={props.val}
+                            timeToDo={props.task?props.task.timeToDo:0}
+                            selectedId={props.selectedId}
                             toSetSeconds={(min)=>props.toSetTime(min)}
                             isTimePanelVisible={true}
                         />
