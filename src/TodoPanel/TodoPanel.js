@@ -39,9 +39,10 @@ class TodoPanel extends React.Component {
                 {this.props.taskList.map(({text, isComplete },id) => {
                         if (!isComplete) {
                             return <Task change={() => this.props.changeIsComplete(id)}
-                                         key={id}
+                                         key={text}
                                          taskText={text}
                                          toSelect={()=>this.props.toSelect(id)}
+                                         selected={id===this.props.selectedId}
                             />
                         }else {return null}
                     }
@@ -52,8 +53,10 @@ class TodoPanel extends React.Component {
                             if (isComplete) {
                                 return <Task change={() => this.props.changeIsComplete(id)}
                                              done={true}
-                                             key={id}
+                                             key={text}
                                              taskText={text}
+                                             toSelect={()=>this.props.toSelect(id)}
+                                             selected={id===this.props.selectedId}
                                 />
                             }else {return null}
                         }

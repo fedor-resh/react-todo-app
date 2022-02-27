@@ -29,10 +29,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-sandbox" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -92,6 +92,15 @@
       <workItem from="1645518897388" duration="15116000" />
       <workItem from="1645617575400" duration="13568000" />
       <workItem from="1645645231060" duration="16000" />
+      <workItem from="1645645694846" duration="2510000" />
+      <workItem from="1645685540628" duration="10050000" />
+      <workItem from="1645714539477" duration="15988000" />
+      <workItem from="1645789208588" duration="339000" />
+      <workItem from="1645807518424" duration="1445000" />
+      <workItem from="1645811580769" duration="1820000" />
+      <workItem from="1645817313789" duration="255000" />
+      <workItem from="1645889373067" duration="681000" />
+      <workItem from="1645900767798" duration="5185000" />
     </task>
     <servers />
   </component>

@@ -3,28 +3,36 @@ import { useInterval } from '@mantine/hooks';
 import styles from './PomodoroPanel.module.css'
 import Task from '../TodoPanel/TaskList/Task/Task';
 import sound from '../electric_bounce.mp3'
+import Slider from './Slider/Slider';
 
 function PomodoroPanel(props) {
-    const [seconds, setSeconds] = useState(3);
-    const interval = useInterval(() => setSeconds((s) => s - 1), 1000);
+
+    const interval = useInterval(() =>
+        setSeconds((s) => s - 1), 1000);
+    const [seconds, setSeconds] = useState(90*60);
+
     const audio = new Audio(sound);
     useEffect(()=>{
-        audio.play();
+        // audio.play();
         interval.stop();
     },[!seconds])
-
 
     function setTimer(min){
         setSeconds(min*60)
         return interval.stop()
     }
-    let time = (seconds/60<10?'0'+ Math.floor(seconds/60):Math.floor(seconds/60))+':'+(seconds%60<10?'0'+seconds%60:seconds%60)
+    let time = (seconds/3600>=1?'1:':'')+
+        (seconds/60%60<10?'0'+ Math.floor(seconds/60%60):Math.floor(seconds/60%60))+
+        ':'+(seconds%60<10?'0'+seconds%60:seconds%60)
     document.title = seconds?time:'Time is over'
     return (
         <div className={styles.panel}>
             <div style={{width:'min(300px,100%)'}}>
                 <h1>Pomodoro - timer</h1>
                 <h1>{time}</h1>
+                <Slider
+                    toSetSeconds={(min)=>setTimer(min)}
+                />
                 <div className={styles.buttons}>
                     <button onClick={()=>setTimer(25)}>Pomodoro</button>
                     <button onClick={()=>setTimer(5)}>Short Break</button>
@@ -33,9 +41,8 @@ function PomodoroPanel(props) {
                     <button
                         disabled={seconds===0}
                         onClick={interval.toggle}
-                        color={interval.active ? 'red' : 'teal'}
-                        variant="light"
-                        className={interval.active ?styles.stopped__timer:styles.active__timer }
+                        className={interval.active ?
+                            styles.stopped__timer:styles.active__timer }
                     >
                         {interval.active ? 'Stop' : 'Start'} timer
                     </button>
@@ -48,6 +55,7 @@ function PomodoroPanel(props) {
                                          taskText={text}
                                          done={isComplete?true:false}
                                          toSelect={()=>props.toSelect(id)}
+                                         selected={id===props.selectedId}
                             />
                         }else {return null}
                     }
