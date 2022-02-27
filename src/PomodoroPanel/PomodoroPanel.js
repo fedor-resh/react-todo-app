@@ -6,11 +6,11 @@ import sound from '../electric_bounce.mp3'
 import Slider from './Slider/Slider';
 
 function PomodoroPanel(props) {
-
+    const [seconds,setSeconds] = useState(0)
     const interval = useInterval(() =>
         setSeconds((s) => s - 1), 1000);
-    const [seconds, setSeconds] = useState(90*60);
-
+    const [valueOfSlider, setValueOfSlider] = useState(0);
+    useEffect(()=>setSeconds(Math.floor(valueOfSlider*10)**2),[valueOfSlider])
     const audio = new Audio(sound);
     useEffect(()=>{
         // audio.play();
@@ -31,7 +31,8 @@ function PomodoroPanel(props) {
                 <h1>Pomodoro - timer</h1>
                 <h1>{time}</h1>
                 <Slider
-                    toSetSeconds={(min)=>setTimer(min)}
+                    valueOfSlider={valueOfSlider}
+                    setValueOfSlider={(x)=>setValueOfSlider(x)}
                 />
                 <div className={styles.buttons}>
                     <button onClick={()=>setTimer(25)}>Pomodoro</button>
