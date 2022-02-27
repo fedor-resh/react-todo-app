@@ -9,8 +9,8 @@ function PomodoroPanel(props) {
     const [seconds,setSeconds] = useState(0)
     const interval = useInterval(() =>
         setSeconds((s) => s - 1), 1000);
-    const [valueOfSlider, setValueOfSlider] = useState(0);
-    useEffect(()=>setSeconds(Math.floor(valueOfSlider*10)**2),[valueOfSlider])
+    // const [valueOfSlider, setValueOfSlider] = useState(0);
+    // useEffect(()=>setSeconds(Math.floor(valueOfSlider*10)**2),[valueOfSlider])
     const audio = new Audio(sound);
     useEffect(()=>{
         // audio.play();
@@ -18,7 +18,9 @@ function PomodoroPanel(props) {
     },[!seconds])
 
     function setTimer(min){
-        setSeconds(min*60)
+        if (min){
+            setSeconds(min*60)
+        }
         return interval.stop()
     }
     let time = (seconds/3600>=1?'1:':'')+
@@ -31,8 +33,9 @@ function PomodoroPanel(props) {
                 <h1>Pomodoro - timer</h1>
                 <h1>{time}</h1>
                 <Slider
-                    valueOfSlider={valueOfSlider}
-                    setValueOfSlider={(x)=>setValueOfSlider(x)}
+                    valueOfSlider={seconds}
+                    setValueOfSlider={(x)=>setSeconds(x)}
+                    stopTimer={()=>setTimer()}
                 />
                 <div className={styles.buttons}>
                     <button onClick={()=>setTimer(25)}>Pomodoro</button>
