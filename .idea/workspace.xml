@@ -17,9 +17,6 @@
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -104,10 +101,12 @@
       <workItem from="1645817313789" duration="255000" />
       <workItem from="1645889373067" duration="681000" />
       <workItem from="1645900767798" duration="5185000" />
-      <workItem from="1645949438666" duration="2656000" />
-      <workItem from="1645964919964" duration="877000" />
-      <workItem from="1646027145652" duration="353000" />
-      <workItem from="1646059439998" duration="79000" />
+      <workItem from="1645949438666" duration="2776000" />
+      <workItem from="1645960667246" duration="584000" />
+      <workItem from="1645964810285" duration="7000" />
+      <workItem from="1645974974335" duration="4544000" />
+      <workItem from="1645993111521" duration="921000" />
+      <workItem from="1646063377072" duration="378000" />
     </task>
     <servers />
   </component>

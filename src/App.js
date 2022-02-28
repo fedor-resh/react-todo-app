@@ -59,7 +59,7 @@ function App() {
         const taskListCopy = taskList.slice()
         taskListCopy[selectedId].description = text
         setTaskList(taskListCopy)
-    }
+    } 
 
     function toSelect(id) {
         if (id === selectedId) {
