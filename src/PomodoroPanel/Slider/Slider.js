@@ -1,6 +1,6 @@
 
 import { useMove } from '@mantine/hooks';
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import styles from './Slider.module.css'
 
 function Slider({
@@ -11,10 +11,10 @@ function Slider({
                     timeToDo = 0,
                     selectedId
 }) {
-    const { ref } = useMove(({ x }) =>
-        setValueOfSlider(Math.round((x*10)**2 )*60));
-    const min = Math.round((valueOfSlider*10)**2)
-    // useEffect(setValueOfSlider((timeToDo**0.5)/10),[selectedId])
+    const { ref } = useMove(({ x }) =>{setValueOfSlider(Math.round((x*10)**2 )*60)})
+
+    const min = valueOfSlider/60
+    useEffect(()=>setValueOfSlider(Math.round((timeToDo*10)**2 )*60),[selectedId])
     const time = (min/60>=1?'1:':'')+(min%60<10?'0'+ min%60:min%60)+ ':00'
     const value = (valueOfSlider/60)**0.5*10
     return (

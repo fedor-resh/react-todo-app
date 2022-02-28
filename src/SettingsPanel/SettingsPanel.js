@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './SettingsPanel.module.css'
 import './SettingsPanel.module.css'
 import Slider from '../PomodoroPanel/Slider/Slider';
 const SettingsPanel = (props) => {
+    const [seconds,setSeconds] = useState(0)
+    useEffect(()=>props.toSetTime(seconds/60),[Math.round(seconds/60)])
     return (
         <div >
             <div className={styles.panel+' '+
@@ -22,9 +24,10 @@ const SettingsPanel = (props) => {
                     />
                     <div style={{height:20}}/>
                         <Slider
+                            valueOfSlider={seconds}
+                            setValueOfSlider={(x)=>setSeconds(x)}
                             timeToDo={props.task?props.task.timeToDo:0}
                             selectedId={props.selectedId}
-                            toSetSeconds={(min)=>props.toSetTime(min)}
                             isTimePanelVisible={true}
                         />
                     <button onClick={props.toDeleteTask}>
