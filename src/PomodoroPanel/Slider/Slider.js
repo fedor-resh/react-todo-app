@@ -4,19 +4,19 @@ import {useEffect} from 'react';
 import styles from './Slider.module.css'
 
 function Slider({
-                    setValueOfSlider,
-                    valueOfSlider,
+                    setValue,
+                    value,
                     stopTimer,
                     isTimePanelVisible=false,
-                    timeToDo = 0,
-                    selectedId
 }) {
-    const { ref } = useMove(({ x }) =>{setValueOfSlider(Math.round((x*10)**2 )*60)})
+    const { ref } = useMove(({ x }) =>{
+        setValue(Math.round((x*10)**2 )*60)
+    })
 
-    const min = valueOfSlider/60
-    useEffect(()=>setValueOfSlider(Math.round((timeToDo*10)**2 )*60),[selectedId])
+    const min = value/60
+
     const time = (min/60>=1?'1:':'')+(min%60<10?'0'+ min%60:min%60)+ ':00'
-    const value = (valueOfSlider/60)**0.5*10
+    const val = (value/60)**0.5*10
     return (
         <>
             <div onClick={stopTimer} style={{paddingBottom:27}}>
@@ -33,7 +33,7 @@ function Slider({
                     {/* Filled bar */}
                     <div
                         style={{
-                            width: `${value}%`,
+                            width: `${val}%`,
                             height: 16,
                             backgroundColor: '#676767',
                             borderRadius:20,
@@ -46,7 +46,7 @@ function Slider({
                     <div className={styles.small__panel}
                         style={{
                             position: 'absolute',
-                            left: `calc(${value}% - 8px)`,
+                            left: `calc(${val}% - 8px)`,
                             top: 0,
                             width: 16,
                             height: 16,

@@ -24,6 +24,7 @@ function App() {
     const [taskList, setTaskList] = useState(
         localStorage.taskList ? JSON.parse(localStorage.taskList) : [])
     const [selectedId, setSelectedId] = useState(undefined)
+    const [isPomodoroClose, setIsPomodoroClose] = useState(true)
     useEffect(() => {
         localStorage.taskList = JSON.stringify(taskList)
         console.log(taskList)
@@ -87,6 +88,8 @@ function App() {
     return (
         <div className="App">
             <PomodoroPanel
+                isPomodoroClose={isPomodoroClose}
+                setIsPomodoroClose={(x)=>setIsPomodoroClose(x)}
                 taskList={taskList}
                 selectedId={selectedId}
                 changeIsComplete={id => changeIsComplete(id)}
@@ -95,6 +98,7 @@ function App() {
             <SettingsPanel
                 selectedId={selectedId}
                 task={taskList[selectedId]}
+                setSelectedId={(id)=>setSelectedId(id)}
                 updateDescription={(text) => updateDescription(text)}
                 updateText={(text) => updateText(text)}
                 toChangeIsInPomodoro={() => toChangeIsInPomodoro()}
