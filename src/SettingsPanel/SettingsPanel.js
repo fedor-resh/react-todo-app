@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import styles from './SettingsPanel.module.css'
 import './SettingsPanel.module.css'
-import Slider from '../PomodoroPanel/Slider/Slider';
+import Slider from '../Slider/Slider';
+import cross from '../cross-svgrepo-com.svg';
 const SettingsPanel = (props) => {
     const [seconds,setSeconds] = useState(0)
     useEffect(()=>{
@@ -13,10 +14,8 @@ const SettingsPanel = (props) => {
         <div >
             <div className={styles.panel+' '+
                 (props.selectedId!==undefined?styles.NotFade:styles.fade)}>
-                <button onClick={()=>props.setSelectedId(undefined)}
-                        className={styles.close__btn}>
-                    close
-                </button>
+                <img onClick={()=>props.setSelectedId(undefined)} className={styles.close__btn} src={cross} alt=""/>
+
                 <div style={{width:'min(300px,100%)',float:'right'}}>
                     <h1 >Settings</h1>
                     <input

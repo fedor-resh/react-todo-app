@@ -16,7 +16,7 @@ function Slider({
     const min = value/60
 
     const time = (min/60>=1?'1:':'')+(min%60<10?'0'+ min%60:min%60)+ ':00'
-    const val = (value/60)**0.5*10
+    const val = value<=6000?(value/60)**0.5*10:100
     return (
         <>
             <div onClick={stopTimer} style={{paddingBottom:27}}>
