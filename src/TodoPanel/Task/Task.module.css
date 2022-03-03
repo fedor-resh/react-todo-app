@@ -24,6 +24,23 @@
 .task:hover .radio{
     box-shadow: inset 0 10px 20px 0 rgba(0, 0, 0, 0.24);
 }
+.cross{
+    opacity: 0;
+    width: 20px;
+    position: absolute;
+    right: 10px;
+    transform: scale(1);
+    transition:0.1s
+}
+.cross:hover{
+    transform: scale(1.1);
+    filter: shadow(0 0 10px 0 black);
+}
+.task:hover .cross{
+    filter: shadow(10px 10px 10px 0px black);
+    opacity: 1;
+}
+
 .radio{
     width: 23px;
     height: 23px;

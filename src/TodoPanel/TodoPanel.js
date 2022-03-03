@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './TodoPanel.module.css'
-import Task from './TaskList/Task/Task';
+import Task from './Task/Task';
 
 class TodoPanel extends React.Component {
     constructor(props) {
@@ -36,27 +36,28 @@ class TodoPanel extends React.Component {
                     />
                     <span onClick={()=>this.sendValue()}> </span>
                 </div>
-                {this.props.taskList.map(({text, isComplete },id) => {
+                {this.props.taskList.map(({text, isComplete, id },i) => {
                         if (!isComplete) {
-                            return <Task change={() => this.props.changeIsComplete(id)}
-                                         key={text}
+                            return <Task change={() => this.props.changeIsComplete(i)}
+                                         key={id}
                                          taskText={text}
-                                         toSelect={()=>this.props.toSelect(id)}
-                                         selected={id===this.props.selectedId}
+                                         toSelect={()=>this.props.toSelect(i)}
+                                         selected={i===this.props.selectedId}
                             />
                         }else {return null}
                     }
                 )}
                 <details>
                     <summary>done</summary>
-                    {this.props.taskList.map(({text, isComplete},id) => {
+                    {this.props.taskList.map(({text, isComplete,id},i) => {
                             if (isComplete) {
-                                return <Task change={() => this.props.changeIsComplete(id)}
+                                return <Task change={() => this.props.changeIsComplete(i)}
                                              done={true}
-                                             key={text}
+                                             key={id}
                                              taskText={text}
-                                             toSelect={()=>this.props.toSelect(id)}
-                                             selected={id===this.props.selectedId}
+                                             toSelect={()=>this.props.toSelect(i)}
+                                             selected={i===this.props.selectedId}
+                                             close={()=>this.props.toDeleteTask(i)}
                                 />
                             }else {return null}
                         }

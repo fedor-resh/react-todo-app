@@ -43,16 +43,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Fedor\WebProgects\react-todo-app\src\TodoPanel" />
       <recent name="C:\Users\user\Desktop\React\react-todo-app\src" />
       <recent name="C:\Users\user\Desktop\React\react-todo-app\src\TodoPanel" />
       <recent name="C:\Users\Федор\Documents\GitHub\react-todo-app\src\TodoPanel" />
       <recent name="C:\Users\Федор\Documents\GitHub\react-todo-app\src\todoPanel" />
-      <recent name="C:\Users\user\Desktop\React\react-todo-app\src\TaskList" />
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
@@ -119,6 +119,7 @@
       <workItem from="1645993111521" duration="921000" />
       <workItem from="1646063377072" duration="3866000" />
       <workItem from="1646113771023" duration="5903000" />
+      <workItem from="1646286359509" duration="6241000" />
     </task>
     <servers />
   </component>

@@ -9,15 +9,13 @@ class TaskClass {
         this.text = text
         this.isComplete = false
         this.isInPomodoro = false
-        this.id = TaskClass.ownId++
+        this.id = Math.random()
         this.description = ''
         this.timeToDo = 0
         this.depthOfInheritance = 1
 
         // this.date = new Date()
     }
-
-    static ownId = 0
 }
 
 function App() {
@@ -34,7 +32,6 @@ function App() {
         if (value) {
             setTaskList([new TaskClass(value), ...taskList])
             setSelectedId(0)
-
         }
     }
 
@@ -44,9 +41,9 @@ function App() {
         setTaskList(taskListCopy)
     }
 
-    function toChangeIsInPomodoro() {
+    function toChangeIsInPomodoro(id) {
         const taskListCopy = taskList.slice()
-        taskListCopy[selectedId].isInPomodoro = !taskListCopy[selectedId].isInPomodoro
+        taskListCopy[id].isInPomodoro = !taskListCopy[id].isInPomodoro
         setTaskList(taskListCopy)
     }
 
@@ -80,9 +77,9 @@ function App() {
         }
     }
 
-    function toDeleteTask() {
+    function toDeleteTask(id) {
         const taskListCopy = taskList.slice()
-        taskListCopy.splice(selectedId, 1)
+        taskListCopy.splice(id, 1)
         setTaskList(taskListCopy)
         setSelectedId(undefined)
     }
@@ -103,6 +100,7 @@ function App() {
                 taskList={taskList}
                 selectedId={selectedId}
                 clear={toClearIsInPomodoro}
+                toChangeIsInPomodoro={(id)=>toChangeIsInPomodoro(id)}
                 changeIsComplete={id => changeIsComplete(id)}
                 toSelect={(id) => toSelect(id)}
             />
@@ -112,14 +110,15 @@ function App() {
                 setSelectedId={(id)=>setSelectedId(id)}
                 updateDescription={(text) => updateDescription(text)}
                 updateText={(text) => updateText(text)}
-                toChangeIsInPomodoro={() => toChangeIsInPomodoro()}
+                toChangeIsInPomodoro={() => toChangeIsInPomodoro(selectedId)}
                 changeIsComplete={id => changeIsComplete(id)}
-                toDeleteTask={() => toDeleteTask()}
+                toDeleteTask={() => toDeleteTask(selectedId)}
                 toSetTime={(min) => toSetTime(min)}
             />
             <TodoPanel
                 selectedId={selectedId}
                 taskList={taskList}
+                toDeleteTask={(id) => toDeleteTask(id)}
                 toSelect={(id) => toSelect(id)}
                 addTask={value => addTask(value)}
                 changeIsComplete={id => changeIsComplete(id)}
