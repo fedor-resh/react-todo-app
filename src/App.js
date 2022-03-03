@@ -50,6 +50,16 @@ function App() {
         setTaskList(taskListCopy)
     }
 
+    function toClearIsInPomodoro(){
+        const taskListCopy = taskList.map((itm)=>{
+            itm.isInPomodoro = false
+            return itm
+        })
+
+        setTaskList(taskListCopy)
+        console.log(234)
+    }
+
     function updateText(text) {
         const taskListCopy = taskList.slice()
         taskListCopy[selectedId].text = text
@@ -92,6 +102,7 @@ function App() {
                 setIsPomodoroClose={(x)=>setIsPomodoroClose(x)}
                 taskList={taskList}
                 selectedId={selectedId}
+                clear={toClearIsInPomodoro}
                 changeIsComplete={id => changeIsComplete(id)}
                 toSelect={(id) => toSelect(id)}
             />
