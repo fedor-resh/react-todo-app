@@ -36,20 +36,21 @@ class TodoPanel extends React.Component {
                     />
                     <span onClick={()=>this.sendValue()}> </span>
                 </div>
-                {this.props.taskList.map(({text, isComplete, id },i) => {
+                {this.props.taskList.map(({text, isComplete, id, timeToDo },i) => {
                         if (!isComplete) {
                             return <Task change={() => this.props.changeIsComplete(i)}
                                          key={id}
                                          taskText={text}
                                          toSelect={()=>this.props.toSelect(i)}
                                          selected={i===this.props.selectedId}
+                                         mins = {timeToDo}
                             />
                         }else {return null}
                     }
                 )}
                 <details>
                     <summary>done</summary>
-                    {this.props.taskList.map(({text, isComplete,id},i) => {
+                    {this.props.taskList.map(({text, isComplete, id, timeToDo},i) => {
                             if (isComplete) {
                                 return <Task change={() => this.props.changeIsComplete(i)}
                                              done={true}
@@ -58,6 +59,7 @@ class TodoPanel extends React.Component {
                                              toSelect={()=>this.props.toSelect(i)}
                                              selected={i===this.props.selectedId}
                                              close={()=>this.props.toDeleteTask(i)}
+                                             mins = {timeToDo}
                                 />
                             }else {return null}
                         }
