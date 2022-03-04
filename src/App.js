@@ -4,17 +4,15 @@ import React, {useEffect, useState} from 'react';
 import SettingsPanel from './SettingsPanel/SettingsPanel';
 
 
-class TaskClass {
-    constructor(text) {
+class classTask {
+    constructor(text,deep = 1) {
         this.text = text
         this.isComplete = false
         this.isInPomodoro = false
         this.id = Math.random()
         this.description = ''
         this.timeToDo = 0
-        this.depthOfInheritance = 1
-
-        // this.date = new Date()
+        this.depthOfInheritance = deep
     }
 }
 
@@ -28,9 +26,9 @@ function App() {
         console.log(taskList)
     }, [taskList])
 
-    function addTask(value) {
+    function addTask(value,deep) {
         if (value) {
-            setTaskList([new TaskClass(value), ...taskList])
+            setTaskList([new classTask(value), ...taskList])
             setSelectedId(0)
         }
     }
@@ -122,6 +120,7 @@ function App() {
                 toSelect={(id) => toSelect(id)}
                 addTask={value => addTask(value)}
                 changeIsComplete={id => changeIsComplete(id)}
+                toChangeIsInPomodoro={id => toChangeIsInPomodoro(id)}
             />
         </div>
     );

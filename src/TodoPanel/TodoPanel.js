@@ -44,6 +44,7 @@ class TodoPanel extends React.Component {
                                          toSelect={()=>this.props.toSelect(i)}
                                          selected={i===this.props.selectedId}
                                          mins = {timeToDo}
+                                         onArrow={()=> this.props.toChangeIsInPomodoro(i)}
                             />
                         }else {return null}
                     }

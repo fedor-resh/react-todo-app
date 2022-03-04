@@ -70,7 +70,8 @@ function PomodoroPanel(props) {
                 {props.taskList.map(({text, isInPomodoro, isComplete,id,timeToDo}, i) => {
                         if (isInPomodoro) {
                             return <Task change={() => props.changeIsComplete(i)}
-                                         close={()=>props.toChangeIsInPomodoro(i)}
+                                         onArrow={()=>props.toChangeIsInPomodoro(i)}
+                                         rotate={true}
                                          key={id}
                                          taskText={text}
                                          done={!!isComplete}

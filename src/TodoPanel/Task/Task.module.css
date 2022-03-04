@@ -44,12 +44,33 @@
     transition:0.1s
 }
 .cross:hover{
-    transform: scale(1.1);
-    filter: shadow(0 0 10px 0 black);
+    transform: scale(1.2);
 }
 .task:hover .cross{
     filter: shadow(10px 10px 10px 0px black);
     opacity: 1;
+}
+.arrow{
+    opacity: 0;
+    width: 20px;
+    position: absolute;
+    right: 15px;
+    transform: scale(1);
+    transition:0.1s
+}
+.arrow:hover{
+    transform:translateX(5px) ;
+}
+.task:hover .arrow{
+    filter: shadow(10px 10px 10px 0px black);
+    opacity: 1;
+}
+.rotate{
+    right: 10px;
+    transform:  rotate(180deg);
+}
+.rotate:hover{
+    transform:translateX(-5px) rotate(180deg);
 }
 
 .radio{
