@@ -9,7 +9,7 @@ import Slider from '../Slider/Slider';
 import cross from '../cross-svgrepo-com.svg'
 function PomodoroPanel(props) {
     const [seconds, setSeconds] = useState(0)
-    const [title, setTitle] = useState('')
+    const [title, setTitle] = useState(' -- Time to work')
     const interval = useInterval(() =>
         setSeconds((s) => s - 1), 1000);
     const audio = new Audio(sound);
@@ -21,15 +21,17 @@ function PomodoroPanel(props) {
     }, [!seconds])
 
     useEffect(()=>{
-        time = props.taskList
-            .filter(({isInPomodoro,isComplete})=>isInPomodoro&&!isComplete)
-            .reduce((sumTime,{timeToDo})=>sumTime+timeToDo,0)
-        setTimer(time)
+        if(!interval.active){
+            time = props.taskList
+                .filter(({isInPomodoro,isComplete})=>isInPomodoro&&!isComplete)
+                .reduce((sumTime,{timeToDo})=>sumTime+timeToDo,0)
+            setTimer(time)
+        }
     },[props.taskList])
 
     function setTimer(min,text = '') {
         if (min!==null) {setSeconds(min * 60)}
-        else{setTitle('')}
+        else{setTitle(' -- Time to focus')}
         if(text){setTitle(text)}
         return interval.stop()
     }
@@ -65,7 +67,7 @@ function PomodoroPanel(props) {
                         {interval.active ? 'Stop' : 'Start'} timer
                     </button>
                 </div>
-                {props.taskList.map(({text, isInPomodoro, isComplete,id}, i) => {
+                {props.taskList.map(({text, isInPomodoro, isComplete,id,timeToDo}, i) => {
                         if (isInPomodoro) {
                             return <Task change={() => props.changeIsComplete(i)}
                                          close={()=>props.toChangeIsInPomodoro(i)}
@@ -74,6 +76,7 @@ function PomodoroPanel(props) {
                                          done={!!isComplete}
                                          toSelect={() => props.toSelect(i)}
                                          selected={i === props.selectedId}
+                                         mins = {timeToDo}
                             />
                         } else {
                             return null
