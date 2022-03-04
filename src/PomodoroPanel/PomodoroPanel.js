@@ -16,7 +16,7 @@ function PomodoroPanel(props) {
     useEffect(() => {
         if(!seconds&&interval.active){
             interval.stop();
-            audio.play();
+            return audio.play();
         }
     }, [!seconds])
 
