@@ -39,6 +39,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="ToolWindowGraphQL.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
@@ -123,6 +124,8 @@
       <workItem from="1646063377072" duration="3866000" />
       <workItem from="1646113771023" duration="5903000" />
       <workItem from="1646286359509" duration="6289000" />
+      <workItem from="1646400137670" duration="851000" />
+      <workItem from="1646413252026" duration="113000" />
     </task>
     <servers />
   </component>

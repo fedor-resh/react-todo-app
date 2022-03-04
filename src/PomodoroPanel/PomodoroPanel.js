@@ -9,7 +9,7 @@ import Slider from '../Slider/Slider';
 import cross from '../cross-svgrepo-com.svg'
 function PomodoroPanel(props) {
     const [seconds, setSeconds] = useState(0)
-    const [title, setTitle] = useState(' -- Time to work')
+    const [title, setTitle] = useState(' — Time to work')
     const interval = useInterval(() =>
         setSeconds((s) => s - 1), 1000);
     const audio = new Audio(sound);
@@ -31,7 +31,7 @@ function PomodoroPanel(props) {
 
     function setTimer(min,text = '') {
         if (min!==null) {setSeconds(min * 60)}
-        else{setTitle(' -- Time to focus')}
+        else{setTitle(' — Time to focus')}
         if(text){setTitle(text)}
         return interval.stop()
     }
@@ -54,9 +54,9 @@ function PomodoroPanel(props) {
                     stopTimer={() => setTimer(null)}
                 />
                 <div className={styles.buttons}>
-                    <button onClick={() => setTimer(25,' -- Time to work')}>Pomodoro</button>
-                    <button onClick={() => setTimer(5, ' -- Time to chill')}>Short Break</button>
-                    <button onClick={() => setTimer(15, ' -- Time to chill')}>Long Break</button>
+                    <button onClick={() => setTimer(25,' — Time to work')}>Pomodoro</button>
+                    <button onClick={() => setTimer(5, ' — Time to chill')}>Short Break</button>
+                    <button onClick={() => setTimer(15, ' — Time to chill')}>Long Break</button>
 
                     <button
                         disabled={seconds === 0}
