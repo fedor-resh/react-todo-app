@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39f5d714-10d1-4b89-886b-35dcfaea6bce" name="Changes" comment="" />
+    <list default="true" id="39f5d714-10d1-4b89-886b-35dcfaea6bce" name="Changes" comment="text commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PomodoroPanel/PomodoroPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PomodoroPanel/PomodoroPanel.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,11 +129,35 @@
       <workItem from="1646286359509" duration="6289000" />
       <workItem from="1646400137670" duration="851000" />
       <workItem from="1646413252026" duration="113000" />
+      <workItem from="1646413406046" duration="1901000" />
     </task>
+    <task id="LOCAL-00001" summary="text commit">
+      <created>1646413489705</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1646413489705</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="text commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="text commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

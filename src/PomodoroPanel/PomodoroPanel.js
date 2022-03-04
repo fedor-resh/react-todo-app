@@ -31,7 +31,7 @@ function PomodoroPanel(props) {
 
     function setTimer(min,text = '') {
         if (min!==null) {setSeconds(min * 60)}
-        else{setTitle(' — Time to focus')}
+        else{setTitle(' — Time to focus!')}
         if(text){setTitle(text)}
         return interval.stop()
     }
@@ -39,7 +39,7 @@ function PomodoroPanel(props) {
     let time = (seconds / 3600 >= 1 ? Math.floor(seconds / 3600 ) + ':': '') +
         (seconds / 60 % 60 < 10 ? '0' + Math.floor(seconds / 60 % 60) : Math.floor(seconds / 60 % 60)) +
         ':' + (seconds % 60 < 10 ? '0' + seconds % 60 : seconds % 60)
-    document.title = seconds ? (interval.active?time + title:time) : 'Time is over'
+    document.title = seconds ? (interval.active?time + title:time + ' — Timer stopped') : 'Time is over'
     return (
         <div className={styles.panel + ' ' +
             (props.isPomodoroClose ? styles.NotFade : styles.fade)}>
@@ -54,7 +54,7 @@ function PomodoroPanel(props) {
                     stopTimer={() => setTimer(null)}
                 />
                 <div className={styles.buttons}>
-                    <button onClick={() => setTimer(25,' — Time to work')}>Pomodoro</button>
+                    <button onClick={() => setTimer(25,' — Time to work!')}>Pomodoro</button>
                     <button onClick={() => setTimer(5, ' — Time to chill')}>Short Break</button>
                     <button onClick={() => setTimer(15, ' — Time to chill')}>Long Break</button>
 
