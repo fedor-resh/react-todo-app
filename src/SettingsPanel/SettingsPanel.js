@@ -8,7 +8,7 @@ const SettingsPanel = (props) => {
     useEffect(()=>{
         props.toSetTime(seconds/60)
     },[Math.round(seconds/60)])
-    useEffect(()=> setSeconds(Math.round(props.task?props.task.timeToDo*60:0)),
+    useEffect(()=> setSeconds(Math.round(props.task?.timeToDo*60??0)),
         [props.selectedId])
     return (
         <div >
@@ -19,13 +19,13 @@ const SettingsPanel = (props) => {
                 <div style={{width:'min(300px,100%)',float:'right'}}>
                     <h1 >Settings</h1>
                     <input
-                        value={props.task?props.task.text:''}
+                        value={props.task?.text??''}
                         onChange={(el)=>
                             props.updateText(el.target.value)}
                     />
                     <p>description</p>
                     <textarea
-                        value={props.task?props.task.description:''}
+                        value={props.task?.description ?? ''}
                         onChange={(el)=>
                             props.updateDescription(el.target.value)}
                     />
@@ -33,7 +33,7 @@ const SettingsPanel = (props) => {
                         <Slider
                             value={seconds}
                             setValue={(x)=>setSeconds(x)}
-                            timeToDo={props.task?props.task.timeToDo:0}
+                            timeToDo={props.task?.timeToDo??0}
                             selectedId={props.selectedId}
                             isTimePanelVisible={true}
                         />
