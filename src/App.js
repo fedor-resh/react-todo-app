@@ -7,12 +7,12 @@ import SettingsPanel from './SettingsPanel/SettingsPanel';
 class classTask {
     constructor(text,deep = 1) {
         this.text = text
+        this.description = ''
+        this.depthOfInheritance = deep
+        this.timeToDo = 0
         this.isComplete = false
         this.isInPomodoro = false
         this.id = Math.random()
-        this.description = ''
-        this.timeToDo = 0
-        this.depthOfInheritance = deep
     }
 }
 
@@ -26,14 +26,14 @@ function App() {
         console.log(taskList)
     }, [taskList])
 
-    function addTask(value,deep) {
+    function createTask(value,deep) {
         if (value) {
             setTaskList([new classTask(value), ...taskList])
             setSelectedId(0)
         }
     }
 
-    function changeIsComplete(id) {
+    function toChangeIsComplete(id) {
         const taskListCopy = taskList.slice()
         taskListCopy[id].isComplete = !taskListCopy[id].isComplete
         setTaskList(taskListCopy)
@@ -50,7 +50,6 @@ function App() {
             itm.isInPomodoro = false
             return itm
         })
-
         setTaskList(taskListCopy)
         console.log(234)
     }
@@ -99,7 +98,7 @@ function App() {
                 selectedId={selectedId}
                 clear={toClearIsInPomodoro}
                 toChangeIsInPomodoro={(id)=>toChangeIsInPomodoro(id)}
-                changeIsComplete={id => changeIsComplete(id)}
+                toChangeIsComplete={id => toChangeIsComplete(id)}
                 toSelect={(id) => toSelect(id)}
             />
             <SettingsPanel
@@ -109,7 +108,7 @@ function App() {
                 updateDescription={(text) => updateDescription(text)}
                 updateText={(text) => updateText(text)}
                 toChangeIsInPomodoro={() => toChangeIsInPomodoro(selectedId)}
-                changeIsComplete={id => changeIsComplete(id)}
+                toChangeIsComplete={id => toChangeIsComplete(id)}
                 toDeleteTask={() => toDeleteTask(selectedId)}
                 toSetTime={(min) => toSetTime(min)}
             />
@@ -118,8 +117,8 @@ function App() {
                 taskList={taskList}
                 toDeleteTask={(id) => toDeleteTask(id)}
                 toSelect={(id) => toSelect(id)}
-                addTask={value => addTask(value)}
-                changeIsComplete={id => changeIsComplete(id)}
+                createTask={value => createTask(value)}
+                toChangeIsComplete={id => toChangeIsComplete(id)}
                 toChangeIsInPomodoro={id => toChangeIsInPomodoro(id)}
             />
         </div>

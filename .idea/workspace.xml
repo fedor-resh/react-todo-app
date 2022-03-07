@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39f5d714-10d1-4b89-886b-35dcfaea6bce" name="Changes" comment="update title">
+    <list default="true" id="39f5d714-10d1-4b89-886b-35dcfaea6bce" name="Changes" comment="refactor in SettingsPanel.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SettingsPanel/SettingsPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SettingsPanel/SettingsPanel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PomodoroPanel/PomodoroPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/PomodoroPanel/PomodoroPanel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Slider/Slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Slider/Slider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TodoPanel/TodoPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoPanel/TodoPanel.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +57,7 @@
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="D:\programms\WebStorm 2021.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -136,7 +140,9 @@
       <workItem from="1646400137670" duration="851000" />
       <workItem from="1646413252026" duration="113000" />
       <workItem from="1646413406046" duration="2107000" />
-      <workItem from="1646558625786" duration="388000" />
+      <workItem from="1646558625786" duration="8072000" />
+      <workItem from="1646593211897" duration="2070000" />
+      <workItem from="1646645954913" duration="1232000" />
     </task>
     <task id="LOCAL-00001" summary="text commit">
       <created>1646413489705</created>
@@ -152,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646419519896</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="refactor in SettingsPanel.js">
+      <created>1646559045595</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1646559045595</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,11 +181,27 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="text commit" />
     <MESSAGE value="update title" />
-    <option name="LAST_COMMIT_MESSAGE" value="update title" />
+    <MESSAGE value="refactor in SettingsPanel.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor in SettingsPanel.js" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

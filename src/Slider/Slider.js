@@ -1,6 +1,5 @@
 
 import { useMove } from '@mantine/hooks';
-import {useEffect} from 'react';
 import styles from './Slider.module.css'
 
 function Slider({
@@ -11,6 +10,7 @@ function Slider({
 }) {
     const { ref } = useMove(({ x }) =>{
         setValue(Math.round((x*10)**2 )*60)
+        stopTimer?.()
     })
 
     const min = value/60

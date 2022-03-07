@@ -16,7 +16,7 @@ function PomodoroPanel(props) {
     useEffect(() => {
         if(!seconds&&interval.active){
             interval.stop();
-            return audio.play();
+            audio.play();
         }
     }, [!seconds])
 
@@ -69,7 +69,7 @@ function PomodoroPanel(props) {
                 </div>
                 {props.taskList.map(({text, isInPomodoro, isComplete,id,timeToDo}, i) => {
                         if (isInPomodoro) {
-                            return <Task change={() => props.changeIsComplete(i)}
+                            return <Task change={() => props.toChangeIsComplete(i)}
                                          onArrow={()=>props.toChangeIsInPomodoro(i)}
                                          rotate={true}
                                          key={id}
