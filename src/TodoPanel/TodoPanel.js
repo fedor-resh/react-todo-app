@@ -20,6 +20,8 @@ function TodoPanel(props) {
         <div className={styles.wrapper}>
             <div className={styles.addPanel}>
                 <input type="text"
+                       placeholder={'write task'}
+                       autoComplete='off'
                        id='input'
                        onChange={(event)=>setValue(event.target.value)}
                        value={value || ""}
