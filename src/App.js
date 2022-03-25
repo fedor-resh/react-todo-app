@@ -2,6 +2,7 @@ import TodoPanel from "./TodoPanel/TodoPanel";
 import PomodoroPanel from './PomodoroPanel/PomodoroPanel';
 import React, {useEffect, useState} from 'react';
 import SettingsPanel from './SettingsPanel/SettingsPanel';
+import FirebaseReader from "./FirebaseReader";
 
 
 class classTask {
@@ -17,12 +18,14 @@ class classTask {
 }
 
 function App() {
-    const [taskList, setTaskList] = useState(
-        localStorage.taskList ? JSON.parse(localStorage.taskList) : [])
+    const [taskList, setTaskList] = useState([])
+        // localStorage.taskList
+            // ? JSON.parse(localStorage.taskList)
+            // : [])
     const [selectedId, setSelectedId] = useState(undefined)
     const [isPomodoroClose, setIsPomodoroClose] = useState(true)
     useEffect(() => {
-        localStorage.taskList = JSON.stringify(taskList)
+        // localStorage.taskList = JSON.stringify(taskList)
         console.log(taskList)
     }, [taskList])
 
@@ -40,18 +43,10 @@ function App() {
     }
 
     function toChangeIsInPomodoro(id) {
+        setIsPomodoroClose(true)
         const taskListCopy = taskList.slice()
         taskListCopy[id].isInPomodoro = !taskListCopy[id].isInPomodoro
         setTaskList(taskListCopy)
-    }
-
-    function toClearIsInPomodoro(){
-        const taskListCopy = taskList.map((itm)=>{
-            itm.isInPomodoro = false
-            return itm
-        })
-        setTaskList(taskListCopy)
-        console.log(234)
     }
 
     function updateText(text) {
@@ -91,12 +86,15 @@ function App() {
 
     return (
         <div className="App">
+            <FirebaseReader
+                taskList={taskList}
+                setTaskList={(el)=>setTaskList(el)}
+            />
             <PomodoroPanel
                 isPomodoroClose={isPomodoroClose}
                 setIsPomodoroClose={(x)=>setIsPomodoroClose(x)}
                 taskList={taskList}
                 selectedId={selectedId}
-                clear={toClearIsInPomodoro}
                 toChangeIsInPomodoro={(id)=>toChangeIsInPomodoro(id)}
                 toChangeIsComplete={id => toChangeIsComplete(id)}
                 toSelect={(id) => toSelect(id)}

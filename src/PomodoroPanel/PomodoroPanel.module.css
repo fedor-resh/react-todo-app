@@ -23,7 +23,7 @@
   transition: 0.5s transform, opacity 0.5s;
 }
 .fade{
-  transform: translateX(800px);
+  -webkit-transform: translateX(800px);
   transition: 0.5s transform, 0.5s opacity;
 }
 .panel>div>div>button:last-child{
