@@ -2,11 +2,11 @@ import TodoPanel from "./TodoPanel/TodoPanel";
 import PomodoroPanel from './PomodoroPanel/PomodoroPanel';
 import React, {useEffect, useState} from 'react';
 import SettingsPanel from './SettingsPanel/SettingsPanel';
-import FirebaseReader from "./FirebaseReader";
+import {takeDoc, setNewDoc} from "./FirebaseReader";
 
 
 class classTask {
-    constructor(text,deep = 1) {
+    constructor(text, deep = 1) {
         this.text = text
         this.description = ''
         this.depthOfInheritance = deep
@@ -19,17 +19,18 @@ class classTask {
 
 function App() {
     const [taskList, setTaskList] = useState([])
-        // localStorage.taskList
-            // ? JSON.parse(localStorage.taskList)
-            // : [])
+
     const [selectedId, setSelectedId] = useState(undefined)
     const [isPomodoroClose, setIsPomodoroClose] = useState(true)
-    useEffect(() => {
-        // localStorage.taskList = JSON.stringify(taskList)
-        console.log(taskList)
-    }, [taskList])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(async () => {
+        await setTaskList(await takeDoc())
+    }, [])
 
-    function createTask(value,deep) {
+    window.onbeforeunload = async () => {
+        await setNewDoc(taskList)
+    }
+    function createTask(value, deep) {
         if (value) {
             setTaskList([new classTask(value), ...taskList])
             setSelectedId(0)
@@ -77,7 +78,7 @@ function App() {
     }
 
     function toSetTime(min) {
-        if (selectedId!==undefined) {
+        if (selectedId !== undefined) {
             const taskListCopy = taskList.slice()
             taskListCopy[selectedId].timeToDo = min
             setTaskList(taskListCopy)
@@ -86,23 +87,19 @@ function App() {
 
     return (
         <div className="App">
-            <FirebaseReader
-                taskList={taskList}
-                setTaskList={(el)=>setTaskList(el)}
-            />
             <PomodoroPanel
                 isPomodoroClose={isPomodoroClose}
-                setIsPomodoroClose={(x)=>setIsPomodoroClose(x)}
+                setIsPomodoroClose={(x) => setIsPomodoroClose(x)}
                 taskList={taskList}
                 selectedId={selectedId}
-                toChangeIsInPomodoro={(id)=>toChangeIsInPomodoro(id)}
+                toChangeIsInPomodoro={(id) => toChangeIsInPomodoro(id)}
                 toChangeIsComplete={id => toChangeIsComplete(id)}
                 toSelect={(id) => toSelect(id)}
             />
             <SettingsPanel
                 selectedId={selectedId}
                 task={taskList[selectedId]}
-                setSelectedId={(id)=>setSelectedId(id)}
+                setSelectedId={(id) => setSelectedId(id)}
                 updateDescription={(text) => updateDescription(text)}
                 updateText={(text) => updateText(text)}
                 toChangeIsInPomodoro={() => toChangeIsInPomodoro(selectedId)}
