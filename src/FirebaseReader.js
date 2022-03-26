@@ -1,7 +1,9 @@
 
-import { setDoc,  getDoc,doc} from 'firebase/firestore'
-import db from './firebase'
+import {doc, setDoc, getDoc} from 'firebase/firestore'
+import {db} from './firebase'
 
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 export const takeDoc =  async () => {
     const docRef = doc(db,'todos','DBVOunupACg8e5HGCbFO')
