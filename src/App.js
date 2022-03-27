@@ -12,7 +12,6 @@ const App = () => {
     return (
         <div>
             {user
-
                 ?<TodoApp/>
                 :<div className={s.wrapper}>
                     <h2 className={s.btn} onClick={()=>singInWithGoogle(auth)}> войти</h2>

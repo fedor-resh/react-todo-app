@@ -21,27 +21,36 @@ class classTask {
 
 function TodoApp() {
     const [user] = useAuthState(auth)
-    const [loading,setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
     const [taskList, setTaskList] = useState([])
 
     const [selectedId, setSelectedId] = useState(undefined)
     const [isPomodoroClose, setIsPomodoroClose] = useState(true)
 
-    const getData = async (id)=>{
-            setTaskList(await takeDoc(id))
-            setLoading(false)
+    const getData = async (id) => {
+        setTaskList(await takeDoc(id))
+        setLoading(false)
     }
-    useEffect(()=>{
+    useEffect(() => {
         console.log(user?.uid)
-        getData(user?.uid ?? 'hello')
+        getData(user?.uid)
+        return setLoading(true)
     }, [user])
 
-    useEffect(()=>{
-        if(!loading){
-            setNewDoc(taskList,user?.uid ?? 'hello')
+    useEffect(() => {
+        if (!loading) {
+            setNewDoc(taskList, user?.uid)
+            setLoading(true)
+            setTimeout(()=>setLoading(false),200)
         }
-    },[loading,taskList,user?.uid])
+    }, [ taskList, user?.uid])
 
+    const signout = async () => {
+        const result = window.confirm('Вы хотите выйти?')
+        if (result) {
+            await signOut(auth)
+        }
+    }
     function createTask(value) {
         if (value) {
             setTaskList([new classTask(value), ...taskList])
@@ -121,10 +130,7 @@ function TodoApp() {
             />
             <TodoPanel
                 setIsPomodoroClose={(x) => setIsPomodoroClose(x)}
-                signOut={async ()=>{
-                    const result = window.confirm('Вы хотите выйти?')
-                    if(result){await signOut(auth)}
-                }}
+                signOut={()=>{signout()}}
                 selectedId={selectedId}
                 taskList={taskList}
                 toDeleteTask={(id) => toDeleteTask(id)}
