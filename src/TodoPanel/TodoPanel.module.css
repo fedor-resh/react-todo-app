@@ -37,3 +37,26 @@
     padding: 0 0 10px;
     user-select: none;
 }
+
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    grid-template-rows: 43px;
+    margin-bottom: 10px;
+}
+
+.buttons button{
+    font-family: HelveticaNeueCyr,sans-serif;
+    font-size: 16px;
+    background-color: #5a5a5a;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow:0 0 5px 0 rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition:box-shadow 0.2s ;
+}
+.buttons button:hover{
+    box-shadow:0 10px 20px 0 rgba(0, 0, 0, 0.24);
+}

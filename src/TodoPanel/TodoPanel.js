@@ -18,6 +18,10 @@ function TodoPanel(props) {
 
     return (
         <div className={styles.wrapper}>
+            <div className={styles.buttons}>
+                <button onClick={()=>props.signOut()}>Sign out</button>
+                <button onClick={()=>{props.setIsPomodoroClose(true)}}>Pomodoro</button>
+            </div>
             <div className={styles.addPanel}>
                 <input type="text"
                        placeholder={'write task'}

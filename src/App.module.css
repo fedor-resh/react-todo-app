@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Cubano Normal';
+    src: local('Cubano Normal'), local('Cubano Normal'),
+    url('./fonts/Cubano.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+.wrapper {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+.btn{
+    font-size: 60px;
+    background-color: #5a5a5a;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow:0 0 5px 0 rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition:box-shadow 0.2s ;
+    margin-bottom: 20vh;
+}
+.btn:hover{
+    box-shadow:0 10px 20px 0 rgba(0, 0, 0, 0.24);
+}

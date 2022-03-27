@@ -3,7 +3,9 @@ import PomodoroPanel from './PomodoroPanel/PomodoroPanel';
 import React, {useEffect, useState} from 'react';
 import SettingsPanel from './SettingsPanel/SettingsPanel';
 import {takeDoc, setNewDoc} from "./FirebaseReader";
-
+import {auth} from './firebase';
+import {useAuthState} from 'react-firebase-hooks/auth';
+import {signOut} from 'firebase/auth'
 
 class classTask {
     constructor(text, deep = 1) {
@@ -18,27 +20,29 @@ class classTask {
 }
 
 function TodoApp() {
+    const [user] = useAuthState(auth)
     const [loading,setLoading] = useState(true)
     const [taskList, setTaskList] = useState([])
 
     const [selectedId, setSelectedId] = useState(undefined)
     const [isPomodoroClose, setIsPomodoroClose] = useState(true)
 
-    const getData = async ()=>{
-            setTaskList(await takeDoc())
+    const getData = async (id)=>{
+            setTaskList(await takeDoc(id))
             setLoading(false)
     }
     useEffect(()=>{
-        getData()
-    }, [])
+        console.log(user?.uid)
+        getData(user?.uid ?? 'hello')
+    }, [user])
 
     useEffect(()=>{
         if(!loading){
-            setNewDoc(taskList)
+            setNewDoc(taskList,user?.uid ?? 'hello')
         }
-    },[loading,taskList])
+    },[loading,taskList,user?.uid])
 
-    function createTask(value, deep) {
+    function createTask(value) {
         if (value) {
             setTaskList([new classTask(value), ...taskList])
             setSelectedId(0)
@@ -116,6 +120,11 @@ function TodoApp() {
                 toSetTime={(min) => toSetTime(min)}
             />
             <TodoPanel
+                setIsPomodoroClose={(x) => setIsPomodoroClose(x)}
+                signOut={async ()=>{
+                    const result = window.confirm('Вы хотите выйти?')
+                    if(result){await signOut(auth)}
+                }}
                 selectedId={selectedId}
                 taskList={taskList}
                 toDeleteTask={(id) => toDeleteTask(id)}
