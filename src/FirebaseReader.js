@@ -20,6 +20,5 @@ export const setNewDoc = async (taskList,uid) => {
 }
 
 export const singInWithGoogle = async () => {
-    provider.setCustomParameters({prompt: 'select_account'})
-    signInWithPopup(auth, provider)
+    await signInWithPopup(auth, provider)
 }
