@@ -4,6 +4,8 @@ import {auth} from './firebase';
 import {singInWithGoogle} from './FirebaseReader';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import s from './App.module.css'
+import TodoPanel from './TodoPanel/TodoPanel';
+import SignIn from './SignIn/SignIn';
 
 
 const App = () => {
@@ -12,9 +14,9 @@ const App = () => {
     return (
         <div>
             {user
-                ?<TodoApp/>
-                :<div className={s.wrapper}>
-                    <h2 className={s.btn} onClick={()=>singInWithGoogle(auth)}> войти</h2>
+                ? <TodoApp/>
+                : <div className={s.wrapper}>
+                    <SignIn/>
                 </div>
             }
         </div>

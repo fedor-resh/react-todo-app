@@ -1,0 +1,65 @@
+
+.grid{
+    display: grid;
+    place-items: center;
+    min-height: 30vh;
+}
+.modal{
+    width: 500px;
+    --color-faded: #a5a5a5;
+    --color-background: #636363;
+    --color-hover: #cbcbcb;
+    --color-bright: #d2d2d2;
+}
+.modal button{
+
+    font-family: "Cubano Normal",sans-serif;
+    background-color: var(--color-faded);
+    color:var(--color-background);
+    padding: 10px 30px;
+    font-size: 20px;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 40px;
+    transition: .2s;
+}
+.modal button:hover{
+    background-color:var(--color-hover)
+}
+
+.modal input,
+.modal button{
+    padding: 0 20px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin: 0 0 10px 0;
+    width: min(400px, 100%);
+
+}
+
+.modal input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+input::placeholder{
+    color: var(--color-faded);
+}
+.modal input{
+    font-family: "Roboto Mono",sans-serif;
+    color: var(--color-bright);
+    background-color: var(--color-background);
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.56) inset;
+    width: min(360px, calc(100% - 40px));
+
+}
+
+.modal h1{
+    font-family: "Cubano Normal",sans-serif;
+    font-size: 40px;
+    color:var(--color-faded);
+    user-select: none;
+    margin-bottom: 5px;
+}

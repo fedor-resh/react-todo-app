@@ -1,11 +1,12 @@
 import TodoPanel from "./TodoPanel/TodoPanel";
 import PomodoroPanel from './PomodoroPanel/PomodoroPanel';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 import SettingsPanel from './SettingsPanel/SettingsPanel';
 import {takeDoc, setNewDoc} from "./FirebaseReader";
 import {auth} from './firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {signOut} from 'firebase/auth'
+import useDebounceEffect from './customHooks';
 
 class classTask {
     constructor(text, deep = 1) {
@@ -37,12 +38,9 @@ function TodoApp() {
         return setLoading(true)
     }, [user])
 
-    useEffect(() => {
-        if (!loading) {
-            setNewDoc(taskList, user?.uid)
-            setLoading(true)
-            setTimeout(()=>setLoading(false),200)
-        }
+    useDebounceEffect(() => {
+        if (loading) return
+        setNewDoc(taskList, user?.uid)
     }, [ taskList, user?.uid])
 
     const signout = async () => {
