@@ -9,7 +9,7 @@ export const takeDoc =  async (uid) => {
         const noteSnapshot = await getDoc(docRef);
         const data = noteSnapshot.data()
         console.log('take')
-        return JSON.parse(data.value)
+        return JSON.parse(data?.value ?? '[]')
 }
 
 export const setNewDoc = async (taskList,uid) => {
