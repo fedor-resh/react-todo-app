@@ -9,14 +9,14 @@ function Slider({
                     isTimePanelVisible=false,
 }) {
     const { ref } = useMove(({ x }) =>{
-        setValue(Math.round((x*10)**2 )*60)
+        setValue(Math.round(x*20)*5*60)
         stopTimer?.()
     })
 
     const min = value/60
 
     const time = (min/60>=1?'1:':'')+(min%60<10?'0'+ min%60:min%60)+ ':00'
-    const val = value<=6000?(value/60)**0.5*10:100
+    const val = value<=6000?(value/60):100
     return (
         <>
             <div onClick={stopTimer} style={{paddingBottom:27}}>
