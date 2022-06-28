@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {useInterval} from '@mantine/hooks';
 import styles from './PomodoroPanel.module.css'
 
-import Task from '../TodoPanel/Task/Task';
-import sound from '../electric_bounce.mp3'
+import Task from '../UI/Task/Task';
+import sound from '../assets/electric_bounce.mp3'
 import Slider from '../Slider/Slider';
 
-import cross from '../cross-svgrepo-com.svg'
+import cross from '../assets/cross-svgrepo-com.svg'
 function PomodoroPanel(props) {
     const [seconds, setSeconds] = useState(0)
     const [title, setTitle] = useState(' — Time to work')

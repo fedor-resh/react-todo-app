@@ -1,23 +1,24 @@
 import TodoPanel from "./TodoPanel/TodoPanel";
 import PomodoroPanel from './PomodoroPanel/PomodoroPanel';
-import React, {useEffect, useLayoutEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import SettingsPanel from './SettingsPanel/SettingsPanel';
-import {takeDoc, setNewDoc} from "./FirebaseReader";
+import {setNewDoc, takeDoc} from "./FirebaseReader";
 import {auth} from './firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
-import {signOut} from 'firebase/auth'
 import useDebounceEffect from './customHooks';
 
 class classTask {
-    constructor(text, deep = 1) {
+
+    constructor(text) {
+        this.timeToDo =  0
+        this.isComplete =  false
+        this.isInPomodoro =  false
+        this.children = []
         this.text = text
         this.description = ''
-        this.depthOfInheritance = deep
-        this.timeToDo = 0
-        this.isComplete = false
-        this.isInPomodoro = false
-        this.id = Math.random()
+        this.id = classTask.id++
     }
+    static id = 0
 }
 
 function TodoApp() {
@@ -41,20 +42,32 @@ function TodoApp() {
     useDebounceEffect(() => {
         if (loading) return
         setNewDoc(taskList, user?.uid)
-    }, [ taskList, user?.uid])
+    }, [taskList, user?.uid])
 
-    const signout = async () => {
+    const signOut = async () => {
         const result = window.confirm('Вы хотите выйти?')
         if (result) {
             await signOut(auth)
         }
     }
-    function createTask(value) {
-        if (value) {
-            setTaskList([new classTask(value), ...taskList])
-            setSelectedId(0)
-        }
+
+    function addTask(value) {
+        if (!value) return
+        setTaskList([new classTask(value), ...taskList])
+        setSelectedId(0)
     }
+
+    function addChildTask(value) {
+        if (!value) return
+        const copyTaskList = taskList
+        copyTaskList[selectedId] = {
+            ...taskList[selectedId],
+            children: [...taskList[selectedId].children, new classTask(value)]
+        }
+        setTaskList(copyTaskList)
+        console.log(taskList)
+    }
+
 
     function toChangeIsComplete(id) {
         const taskListCopy = taskList.slice()
@@ -116,24 +129,25 @@ function TodoApp() {
                 toSelect={(id) => toSelect(id)}
             />
             <SettingsPanel
+                addChildTask={addChildTask}
                 selectedId={selectedId}
                 task={taskList[selectedId]}
-                setSelectedId={(id) => setSelectedId(id)}
-                updateDescription={(text) => updateDescription(text)}
-                updateText={(text) => updateText(text)}
+                setSelectedId={setSelectedId}
+                updateDescription={updateDescription}
+                updateText={updateText}
                 toChangeIsInPomodoro={() => toChangeIsInPomodoro(selectedId)}
-                toChangeIsComplete={id => toChangeIsComplete(id)}
+                toChangeIsComplete={toChangeIsComplete}
                 toDeleteTask={() => toDeleteTask(selectedId)}
-                toSetTime={(min) => toSetTime(min)}
+                toSetTime={toSetTime}
             />
             <TodoPanel
                 setIsPomodoroClose={(x) => setIsPomodoroClose(x)}
-                signOut={()=>{signout()}}
+                signOut={signOut}
                 selectedId={selectedId}
                 taskList={taskList}
                 toDeleteTask={(id) => toDeleteTask(id)}
                 toSelect={(id) => toSelect(id)}
-                createTask={value => createTask(value)}
+                createTask={value => addTask(value)}
                 toChangeIsComplete={id => toChangeIsComplete(id)}
                 toChangeIsInPomodoro={id => toChangeIsInPomodoro(id)}
             />

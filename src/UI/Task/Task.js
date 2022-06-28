@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Task.module.css'
-import cross from '../../cross-svgrepo-com.svg'
-import arrow from '../../right-arrow-svgrepo-com.svg'
+import cross from '../../assets/cross-svgrepo-com.svg'
+import arrow from '../../assets/right-arrow-svgrepo-com.svg'
 const Task = ({
                   taskText,
                   change,

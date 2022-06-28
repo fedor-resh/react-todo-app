@@ -2,9 +2,11 @@ import React, {useEffect, useState} from 'react';
 import styles from './SettingsPanel.module.css'
 import './SettingsPanel.module.css'
 import Slider from '../Slider/Slider';
-import cross from '../cross-svgrepo-com.svg';
+import cross from '../assets/cross-svgrepo-com.svg';
+import AddInput from "../UI/AddInput/AddInput";
 const SettingsPanel = (props) => {
     const [seconds,setSeconds] = useState(0)
+    const [childInput, setChildInput] = useState('')
     useEffect(()=>{
         props.toSetTime(seconds/60)
     },[Math.round(seconds/60)])
@@ -23,6 +25,14 @@ const SettingsPanel = (props) => {
                         onChange={(el)=>
                             props.updateText(el.target.value)}
                     />
+                    <div style={{margin:'10px 0 0 10px'}}>
+                        <AddInput
+                            setValue={setChildInput}
+                            value={childInput}
+                            sendValue={()=>props.addChildTask(childInput)}
+                            placeholder='write child task'
+                        />
+                    </div>
                     <p>description</p>
                     <textarea
                         value={props.task?.description ?? ''}
